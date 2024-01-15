@@ -1,0 +1,17 @@
+server_address: 0.0.0.0:50051
+
+client_add: "[::]:50051" #for testing, has to do with the servername in certs
+
+kafka_broker_url: 0.0.0.0:9092
+
+kafka_topic_name: apiCallLogs
+
+use_tls: false
+
+
+number_of_threads: 4  #threads for async server
+
+certificate_path:     #relative path from cmake/build
+  CACert: ../../certs/ca.pem 
+  ServerCert: ../../certs/server.pem 
+  ServerKey: ../../certs/server.key

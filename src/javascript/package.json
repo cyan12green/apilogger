@@ -1,0 +1,28 @@
+{
+  "name": "grpc-web-commonjs-example",
+  "version": "0.1.0",
+  "description": "gRPC-Web CommonJS client example",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@grpc/grpc-js": "^1.9.9",
+    "@npmcli/config": "^8.0.1",
+    "bindings": "^1.5.0",
+    "crypto": "^1.0.1",
+    "crypto-browserify": "^3.12.0",
+    "crypto-js": "^4.2.0",
+    "fs": "^0.0.1-security",
+    "google-protobuf": "~3.14.0",
+    "grpc-web": "~1.4.2",
+    "stream": "^0.0.2",
+    "stream-browserify": "^3.0.0",
+    "webcrypto": "0.1.1"
+  },
+  "devDependencies": {
+    "node-loader": "^2.0.0",
+    "webpack": "~5.82.1",
+    "webpack-cli": "~5.1.1"
+  },
+  "browser": {
+    "fs": false
+  }
+}
