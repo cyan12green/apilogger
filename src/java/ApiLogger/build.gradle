@@ -3,6 +3,44 @@ plugins {
     id 'java-library'
 
     id 'com.google.protobuf' version '0.9.4'
+
+
+}
+apply plugin: 'maven-publish'
+
+publishing {
+    publications {
+        customLibrary(MavenPublication) {
+            groupId = 'src'
+            artifactId = 'apilogger-maven'
+            version = '0.0.1-maven'
+
+            from components.java
+
+        pom.withXml {
+            asNode()
+                    .dependencies
+                    .dependency
+                    .findAll { dependency ->
+                        // find all dependencies with runtime scope
+                        dependency.scope.text() == 'runtime'
+                    }
+                    .each { dependency ->
+                        // set the scope to 'compile'
+                        dependency.scope*.value = 'compile'
+                    }
+        }
+    }
+    }
+
+    repositories {
+        maven {
+            name = 'sampleRepo'
+            url = layout.projectDirectory.dir('maven')
+        }
+
+    }
+
 }
 
 repositories {
@@ -11,6 +49,8 @@ repositories {
 
 
     mavenLocal()
+
+
 }
 
 dependencies {
@@ -29,9 +69,6 @@ dependencies {
     implementation 'io.grpc:grpc-stub:1.59.0'
     compileOnly 'org.apache.tomcat:annotations-api:6.0.53' // necessary for Java 9+
 
-    //implementation 'com.wolfssl:wolfcrypt-jni:1.5.0-SNAPSHOT' //jni wrapper of wolfcrypt library
-
-    //implementation 'com.fasterxml.jackson.core:jackson-databind:2.16.0'
 }
 
 // Apply a specific Java toolchain to ease working on different environments.

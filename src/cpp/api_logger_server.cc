@@ -69,6 +69,7 @@ class AsyncServer final {
           } 
         void Proceed(bool ok) 
         { 
+          std::string input;
           switch(status_)
           { 
             case REQUEST: 
@@ -87,8 +88,8 @@ class AsyncServer final {
               }
 
             case PROCESS:
-              
-              data_->kafka_msg_builder->payload(request_.log_data());
+              input = "HIGH " + request_.log_data(); 
+              data_->kafka_msg_builder->payload( input );
               data_->producer->produce(*(data_->kafka_msg_builder));
               data_->producer->flush();
 
@@ -140,8 +141,8 @@ class AsyncServer final {
 
             case PROCESS:
               for (std::string logs: request_.log_batch()){ 
-              
-                data_->kafka_msg_builder->payload(logs);
+                std::string input = "LOW " + logs;
+                data_->kafka_msg_builder->payload( input );
                 data_->producer->produce(*(data_->kafka_msg_builder));
               }
               data_->producer->flush();

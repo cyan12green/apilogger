@@ -16,5 +16,5 @@ int main(int argc, char** argv)
       kCACert, 
       50);
   
-  std::cout << client.SendLog("test single log call", ApiLoggerClient::log_priority::HIGH);
+  client.SendLog("17/Jan/24 {12:15:19.558} [TR:1769453] [I] : [192.168.1.2] \"POST getEncryptionKey\" 200 {12:15:19.552} [ : ] {12:15:19.558}", ApiLoggerClient::log_priority::HIGH);
 }

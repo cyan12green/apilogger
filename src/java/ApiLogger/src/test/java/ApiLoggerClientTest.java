@@ -16,7 +16,7 @@ public class ApiLoggerClientTest {
     public void checkSingleLog(){
         ApiLoggerClient client = new ApiLoggerClient(serverAddress, useTls, CApath, ClientCertPath, ClientKey, 10);
 
-        client.SendLog("single log from java", ApiLoggerClient.log_priority.HIGH);
+        client.SendLog("json: ", ApiLoggerClient.log_priority.HIGH);
 
         client.ShutDown();
 

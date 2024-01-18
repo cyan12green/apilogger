@@ -8,7 +8,7 @@ set(SRC_DIR "${CMAKE_CURRENT_SOURCE_DIR}/src")
 set(TEST_DIR "${CMAKE_CURRENT_SOURCE_DIR}/tests")
 set(CMAKE_BUILD_TYPE Debug)
 
-list(APPEND CMAKE_PREFIX_PATH "/home/cyangreen/.local")
+#list(APPEND CMAKE_PREFIX_PATH "/home/cyangreen/.local")
 
 set(ENABLE_TESTS ON)
 set(ENABLE_PYTHON ON)
@@ -25,30 +25,51 @@ set(_GRPC_GRPCPP gRPC::grpc++)
 set(_PROTOBUF_LIBPROTOBUF protobuf::libprotobuf)
 set(_REFLECTION gRPC::grpc++_reflection)
 
-find_package(Protobuf CONFIG REQUIRED)
+FetchContent_Declare(
+  gRPC
+   GIT_REPOSITORY https://github.com/grpc/grpc.git
+   GIT_TAG v1.60.0
+  )
+
+FetchContent_Declare(
+  Protobuf
+  GIT_REPOSITORY https://github.com/protocolbuffers/protobuf.git
+  GIT_TAG v4.25.2
+  )
+
+find_package(Protobuf CONFIG)
 message(STATUS "Using protobuf ${Protobuf_VERSION}")
 
-find_package(gRPC CONFIG REQUIRED)
+if (NOT Protobuf_FOUND)
+  FetchContent_MakeAvailable(Protobuf)
+endif()
+
+find_package(gRPC CONFIG)
+if (NOT gRPC_FOUND)
+  FetchContent_MakeAvailable(gRPC)
+endif()
+
 message(STATUS "Using gRPC ${gRPC_VERSION}")
 
 set(_GRPC_CPP_PLUGIN_EXECUTABLE $<TARGET_FILE:gRPC::grpc_cpp_plugin>)
 set(_GRPC_PYTHON_PLUGIN_EXECUTABLE $<TARGET_FILE:gRPC::grpc_python_plugin>)
 
+if (BUILD_SERVER)
+  FetchContent_Declare(
+    yaml-cpp
+    GIT_REPOSITORY https://github.com/jbeder/yaml-cpp.git
+    GIT_TAG yaml-cpp-0.7.0
+    )
 
-FetchContent_Declare(
-  yaml-cpp
-  GIT_REPOSITORY https://github.com/jbeder/yaml-cpp.git
-  GIT_TAG yaml-cpp-0.7.0
-)
+  FetchContent_GetProperties(yaml-cpp)
 
-FetchContent_GetProperties(yaml-cpp)
+  if(NOT yaml-cpp_POPULATED)
+    message(STATUS "Fetching yaml-cpp...")
+    FetchContent_Populate(yaml-cpp)
 
-if(NOT yaml-cpp_POPULATED)
-  message(STATUS "Fetching yaml-cpp...")
-  FetchContent_Populate(yaml-cpp)
-  add_subdirectory(${yaml-cpp_SOURCE_DIR} ${yaml-cpp_BINARY_DIR})
+    add_subdirectory(${yaml-cpp_SOURCE_DIR} ${yaml-cpp_BINARY_DIR})
+  endif()
 endif()
-
 
 #FetchContent_Declare(
 #  CppKafka
@@ -61,6 +82,7 @@ endif()
 #set(CppKafka_DIR ${CMAKE_BINARY_DIR}/package)
 
 if (BUILD_SERVER)
+  list(APPEND CMAKE_PREFIX_PATH "/home/cyangreen/.local")
   find_package(CppKafka REQUIRED)
 endif()
 
