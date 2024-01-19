@@ -3,7 +3,6 @@
 import grpc
 
 import api_logger_pb2 as api__logger__pb2
-from google.protobuf import empty_pb2 as google_dot_protobuf_dot_empty__pb2
 
 
 class ApiLoggerStub(object):
@@ -18,12 +17,12 @@ class ApiLoggerStub(object):
         self.sendSingleLog = channel.unary_unary(
                 '/apilogger.ApiLogger/sendSingleLog',
                 request_serializer=api__logger__pb2.SingleLog.SerializeToString,
-                response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
+                response_deserializer=api__logger__pb2.Empty.FromString,
                 )
         self.sendBatchLog = channel.unary_unary(
                 '/apilogger.ApiLogger/sendBatchLog',
                 request_serializer=api__logger__pb2.BatchLog.SerializeToString,
-                response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
+                response_deserializer=api__logger__pb2.Empty.FromString,
                 )
 
 
@@ -49,12 +48,12 @@ def add_ApiLoggerServicer_to_server(servicer, server):
             'sendSingleLog': grpc.unary_unary_rpc_method_handler(
                     servicer.sendSingleLog,
                     request_deserializer=api__logger__pb2.SingleLog.FromString,
-                    response_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
+                    response_serializer=api__logger__pb2.Empty.SerializeToString,
             ),
             'sendBatchLog': grpc.unary_unary_rpc_method_handler(
                     servicer.sendBatchLog,
                     request_deserializer=api__logger__pb2.BatchLog.FromString,
-                    response_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
+                    response_serializer=api__logger__pb2.Empty.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -79,7 +78,7 @@ class ApiLogger(object):
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/apilogger.ApiLogger/sendSingleLog',
             api__logger__pb2.SingleLog.SerializeToString,
-            google_dot_protobuf_dot_empty__pb2.Empty.FromString,
+            api__logger__pb2.Empty.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -96,6 +95,6 @@ class ApiLogger(object):
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/apilogger.ApiLogger/sendBatchLog',
             api__logger__pb2.BatchLog.SerializeToString,
-            google_dot_protobuf_dot_empty__pb2.Empty.FromString,
+            api__logger__pb2.Empty.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

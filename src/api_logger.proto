@@ -1,6 +1,5 @@
 syntax = "proto3";
 
-import "google/protobuf/empty.proto";
 
 package apilogger;
 
@@ -10,10 +9,10 @@ option java_multiple_files = true;
 service ApiLogger {
   
   //send logs
-  rpc sendSingleLog(SingleLog) returns (google.protobuf.Empty){
+  rpc sendSingleLog(SingleLog) returns (Empty){
   }
 
-  rpc sendBatchLog(BatchLog) returns (google.protobuf.Empty){ 
+  rpc sendBatchLog(BatchLog) returns (Empty){ 
   }
 
 }
@@ -24,4 +23,8 @@ message SingleLog {
 
 message BatchLog { 
   repeated bytes log_batch = 1;
+}
+
+message Empty {
+  ;
 }

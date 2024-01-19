@@ -16,8 +16,6 @@
 #include <grpcpp/security/tls_certificate_provider.h>
 #include <grpcpp/security/tls_credentials_options.h>
 
-#include <google/protobuf/empty.pb.h>
-
 #include <yaml-cpp/node/parse.h>
 #include "yaml-cpp/yaml.h"
 
@@ -32,12 +30,11 @@ using grpc::Server;
 using grpc::ServerBuilder;
 using grpc::experimental::FileWatcherCertificateProvider;
 
-using google::protobuf::Empty;
 
 using apilogger::ApiLogger;
 using apilogger::SingleLog;
 using apilogger::BatchLog;
-
+using apilogger::Empty;
 
 
 struct CallData { 

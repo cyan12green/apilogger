@@ -11,10 +11,9 @@ from google.protobuf.internal import builder as _builder
 _sym_db = _symbol_database.Default()
 
 
-from google.protobuf import empty_pb2 as google_dot_protobuf_dot_empty__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x10\x61pi_logger.proto\x12\tapilogger\x1a\x1bgoogle/protobuf/empty.proto\"\x1d\n\tSingleLog\x12\x10\n\x08log_data\x18\x01 \x01(\x0c\"\x1d\n\x08\x42\x61tchLog\x12\x11\n\tlog_batch\x18\x01 \x03(\x0c\x32\x8b\x01\n\tApiLogger\x12?\n\rsendSingleLog\x12\x14.apilogger.SingleLog\x1a\x16.google.protobuf.Empty\"\x00\x12=\n\x0csendBatchLog\x12\x13.apilogger.BatchLog\x1a\x16.google.protobuf.Empty\"\x00\x42\x17\n\x13\x63om.proto.apiloggerP\x01\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x10\x61pi_logger.proto\x12\tapilogger\"\x1d\n\tSingleLog\x12\x10\n\x08log_data\x18\x01 \x01(\x0c\"\x1d\n\x08\x42\x61tchLog\x12\x11\n\tlog_batch\x18\x01 \x03(\x0c\"\x07\n\x05\x45mpty2\x7f\n\tApiLogger\x12\x39\n\rsendSingleLog\x12\x14.apilogger.SingleLog\x1a\x10.apilogger.Empty\"\x00\x12\x37\n\x0csendBatchLog\x12\x13.apilogger.BatchLog\x1a\x10.apilogger.Empty\"\x00\x42\x17\n\x13\x63om.proto.apiloggerP\x01\x62\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -22,10 +21,12 @@ _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'api_logger_pb2', _globals)
 if _descriptor._USE_C_DESCRIPTORS == False:
   DESCRIPTOR._options = None
   DESCRIPTOR._serialized_options = b'\n\023com.proto.apiloggerP\001'
-  _globals['_SINGLELOG']._serialized_start=60
-  _globals['_SINGLELOG']._serialized_end=89
-  _globals['_BATCHLOG']._serialized_start=91
-  _globals['_BATCHLOG']._serialized_end=120
-  _globals['_APILOGGER']._serialized_start=123
-  _globals['_APILOGGER']._serialized_end=262
+  _globals['_SINGLELOG']._serialized_start=31
+  _globals['_SINGLELOG']._serialized_end=60
+  _globals['_BATCHLOG']._serialized_start=62
+  _globals['_BATCHLOG']._serialized_end=91
+  _globals['_EMPTY']._serialized_start=93
+  _globals['_EMPTY']._serialized_end=100
+  _globals['_APILOGGER']._serialized_start=102
+  _globals['_APILOGGER']._serialized_end=229
 # @@protoc_insertion_point(module_scope)

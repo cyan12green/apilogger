@@ -5,12 +5,11 @@ using grpc::ClientContext;
 using grpc::Status;
 using grpc::experimental::FileWatcherCertificateProvider;
 
-using google::protobuf::Empty;
 
 using apilogger::ApiLogger;
 using apilogger::BatchLog;
 using apilogger::SingleLog;
-
+using apilogger::Empty;
 
 
 #define DEBUG false

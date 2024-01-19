@@ -1,7 +1,6 @@
 #ifndef __API_LOGGER_CLIENT_H
 #define __API_LOGGER_CLIENT_H
 
-#include <google/protobuf/repeated_field.h>
 #include <vector>
 
 #include <grpc/grpc.h>
@@ -10,7 +9,6 @@
 #include <grpcpp/security/credentials.h>
 #include <grpcpp/security/server_credentials.h>
 #include <grpcpp/security/tls_credentials_options.h>
-#include <google/protobuf/empty.pb.h>
 #include <grpcpp/security/tls_certificate_provider.h>
 
 

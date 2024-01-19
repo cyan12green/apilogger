@@ -8,8 +8,8 @@ set(SRC_DIR "${CMAKE_CURRENT_SOURCE_DIR}/src")
 set(TEST_DIR "${CMAKE_CURRENT_SOURCE_DIR}/tests")
 set(CMAKE_BUILD_TYPE Debug)
 
-#list(APPEND CMAKE_PREFIX_PATH "/home/cyangreen/.local")
-
+list(APPEND CMAKE_PREFIX_PATH "/home/cyangreen/.local")
+message(${CMAKE_PREFIX_PATH})
 set(ENABLE_TESTS ON)
 set(ENABLE_PYTHON ON)
 set(ENABLE_JS ON)
@@ -20,10 +20,6 @@ message(STATUS "Building python: ${ENABLE_PYTHON}")
 message(STATUS "Building javascript: ${ENABLE_JS}")
 
 #########
-set(_PROTOBUF_PROTOC $<TARGET_FILE:protobuf::protoc>)
-set(_GRPC_GRPCPP gRPC::grpc++)
-set(_PROTOBUF_LIBPROTOBUF protobuf::libprotobuf)
-set(_REFLECTION gRPC::grpc++_reflection)
 
 FetchContent_Declare(
   gRPC
@@ -37,21 +33,35 @@ FetchContent_Declare(
   GIT_TAG v4.25.2
   )
 
-find_package(Protobuf CONFIG)
-message(STATUS "Using protobuf ${Protobuf_VERSION}")
-
-if (NOT Protobuf_FOUND)
-  FetchContent_MakeAvailable(Protobuf)
-endif()
-
 find_package(gRPC CONFIG)
 if (NOT gRPC_FOUND)
+  message("Fetching grpc...")
   FetchContent_MakeAvailable(gRPC)
+
+  set(_PROTOBUF_PROTOC protobuf::protoc)
+  set(_GRPC_GRPCPP grpc++)
+  set(_PROTOBUF_LIBPROTOBUF protobuf::libprotobuf)
+  set(_REFLECTION grpc++_reflection)
+  set(_GRPC_CPP_PLUGIN_EXECUTABLE grpc_cpp_plugin)
+
+else()
+  set(_PROTOBUF_PROTOC $<TARGET_FILE:protobuf::protoc>)
+  set(_GRPC_GRPCPP gRPC::grpc++)
+  set(_PROTOBUF_LIBPROTOBUF protobuf::libprotobuf)
+  set(_REFLECTION gRPC::grpc++_reflection)
+  set(_GRPC_CPP_PLUGIN_EXECUTABLE $<TARGET_FILE:gRPC::grpc_cpp_plugin>)
+
 endif()
 
 message(STATUS "Using gRPC ${gRPC_VERSION}")
 
-set(_GRPC_CPP_PLUGIN_EXECUTABLE $<TARGET_FILE:gRPC::grpc_cpp_plugin>)
+find_package(Protobuf CONFIG)
+message(STATUS "Using protobuf ${Protobuf_VERSION}")
+
+if (NOT Protobuf_FOUND)
+        # FetchContent_MakeAvailable(Protobuf)
+endif()
+
 set(_GRPC_PYTHON_PLUGIN_EXECUTABLE $<TARGET_FILE:gRPC::grpc_python_plugin>)
 
 if (BUILD_SERVER)

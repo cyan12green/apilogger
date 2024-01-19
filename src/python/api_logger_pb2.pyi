@@ -1,4 +1,3 @@
-from google.protobuf import empty_pb2 as _empty_pb2
 from google.protobuf.internal import containers as _containers
 from google.protobuf import descriptor as _descriptor
 from google.protobuf import message as _message
@@ -17,3 +16,7 @@ class BatchLog(_message.Message):
     LOG_BATCH_FIELD_NUMBER: _ClassVar[int]
     log_batch: _containers.RepeatedScalarFieldContainer[bytes]
     def __init__(self, log_batch: _Optional[_Iterable[bytes]] = ...) -> None: ...
+
+class Empty(_message.Message):
+    __slots__ = []
+    def __init__(self) -> None: ...

@@ -1,9 +1,11 @@
 import com.google.protobuf.ByteString;
-import com.google.protobuf.Empty;
-import com.proto.apilogger.ApiLoggerGrpc;
-import com.proto.apilogger.BatchLog;
-import com.proto.apilogger.SingleLog;
 import io.grpc.*;
+
+import com.proto.apilogger.Empty;
+import com.proto.apilogger.SingleLog;
+import com.proto.apilogger.BatchLog;
+import com.proto.apilogger.ApiLoggerOuterClass;
+import com.proto.apilogger.ApiLoggerGrpc;
 
 import java.io.File;
 import java.io.IOException;

@@ -1,8 +1,8 @@
-const google_protobuf_empty_pb = require('google-protobuf/google/protobuf/empty_pb.js');
 
 const {
   SingleLog,
   BatchLog,
+  Empty,
 } = require('./api_logger_pb.js');
 
 const {ApiLoggerClient} = require('./api_logger_grpc_web_pb.js');

@@ -19,8 +19,6 @@
 const grpc = {};
 grpc.web = require('grpc-web');
 
-
-var google_protobuf_empty_pb = require('google-protobuf/google/protobuf/empty_pb.js')
 const proto = {};
 proto.apilogger = require('./api_logger_pb.js');
 
@@ -80,13 +78,13 @@ proto.apilogger.ApiLoggerPromiseClient =
  * @const
  * @type {!grpc.web.MethodDescriptor<
  *   !proto.apilogger.SingleLog,
- *   !proto.google.protobuf.Empty>}
+ *   !proto.apilogger.Empty>}
  */
 const methodDescriptor_ApiLogger_sendSingleLog = new grpc.web.MethodDescriptor(
   '/apilogger.ApiLogger/sendSingleLog',
   grpc.web.MethodType.UNARY,
   proto.apilogger.SingleLog,
-  google_protobuf_empty_pb.Empty,
+  proto.apilogger.Empty,
   /**
    * @param {!proto.apilogger.SingleLog} request
    * @return {!Uint8Array}
@@ -94,7 +92,7 @@ const methodDescriptor_ApiLogger_sendSingleLog = new grpc.web.MethodDescriptor(
   function(request) {
     return request.serializeBinary();
   },
-  google_protobuf_empty_pb.Empty.deserializeBinary
+  proto.apilogger.Empty.deserializeBinary
 );
 
 
@@ -103,9 +101,9 @@ const methodDescriptor_ApiLogger_sendSingleLog = new grpc.web.MethodDescriptor(
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.google.protobuf.Empty)}
+ * @param {function(?grpc.web.RpcError, ?proto.apilogger.Empty)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.google.protobuf.Empty>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.apilogger.Empty>|undefined}
  *     The XHR Node Readable Stream
  */
 proto.apilogger.ApiLoggerClient.prototype.sendSingleLog =
@@ -124,7 +122,7 @@ proto.apilogger.ApiLoggerClient.prototype.sendSingleLog =
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.google.protobuf.Empty>}
+ * @return {!Promise<!proto.apilogger.Empty>}
  *     Promise that resolves to the response
  */
 proto.apilogger.ApiLoggerPromiseClient.prototype.sendSingleLog =
@@ -141,13 +139,13 @@ proto.apilogger.ApiLoggerPromiseClient.prototype.sendSingleLog =
  * @const
  * @type {!grpc.web.MethodDescriptor<
  *   !proto.apilogger.BatchLog,
- *   !proto.google.protobuf.Empty>}
+ *   !proto.apilogger.Empty>}
  */
 const methodDescriptor_ApiLogger_sendBatchLog = new grpc.web.MethodDescriptor(
   '/apilogger.ApiLogger/sendBatchLog',
   grpc.web.MethodType.UNARY,
   proto.apilogger.BatchLog,
-  google_protobuf_empty_pb.Empty,
+  proto.apilogger.Empty,
   /**
    * @param {!proto.apilogger.BatchLog} request
    * @return {!Uint8Array}
@@ -155,7 +153,7 @@ const methodDescriptor_ApiLogger_sendBatchLog = new grpc.web.MethodDescriptor(
   function(request) {
     return request.serializeBinary();
   },
-  google_protobuf_empty_pb.Empty.deserializeBinary
+  proto.apilogger.Empty.deserializeBinary
 );
 
 
@@ -164,9 +162,9 @@ const methodDescriptor_ApiLogger_sendBatchLog = new grpc.web.MethodDescriptor(
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.google.protobuf.Empty)}
+ * @param {function(?grpc.web.RpcError, ?proto.apilogger.Empty)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.google.protobuf.Empty>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.apilogger.Empty>|undefined}
  *     The XHR Node Readable Stream
  */
 proto.apilogger.ApiLoggerClient.prototype.sendBatchLog =
@@ -185,7 +183,7 @@ proto.apilogger.ApiLoggerClient.prototype.sendBatchLog =
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.google.protobuf.Empty>}
+ * @return {!Promise<!proto.apilogger.Empty>}
  *     Promise that resolves to the response
  */
 proto.apilogger.ApiLoggerPromiseClient.prototype.sendBatchLog =
