@@ -16,5 +16,18 @@ int main(int argc, char** argv)
       kCACert, 
       50);
   
-  client.SendLog("17/Jan/24 {12:15:19.558} [TR:1769453] [I] : [192.168.1.2] \"POST getEncryptionKey\" 200 {12:15:19.552} [ : ] {12:15:19.558}", ApiLoggerClient::log_priority::HIGH);
+  std::string json = "{"
+  "\"clientIP\": \"exampleClientIP\", "
+  "\"timestamp\": 1643068800000, "
+  "\"httpMethod\": \"GET\", "
+  "\"requestUrl\": \"exampleRequestUrl\","
+  "\"traceId\": \"exampleTraceId\","
+  "\"responseTime\": 1000,"
+  "\"clientId\": \"exampleClientId\","
+  "\"productId\": \"exampleProductId\","
+  "\"deviceInfo\": \"exampleDeviceInfo\","
+  "\"responseCode\": 200"
+"}";
+
+  client.SendLog(json, ApiLoggerClient::log_priority::HIGH);
 }

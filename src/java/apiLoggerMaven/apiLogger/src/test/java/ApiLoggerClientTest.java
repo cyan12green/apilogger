@@ -3,7 +3,7 @@ import org.junit.Test;
 public class ApiLoggerClientTest {
 
 
-    private static final String serverAddress = "localhost:50051";
+    private static final String serverAddress = "157.245.104.78:5051";
     //in project_root/src/java/lib
     private static final String certs = "./../../../../certs/";
     private static final String CApath = certs + "ca.pem";
@@ -14,7 +14,7 @@ public class ApiLoggerClientTest {
 
     @Test
     public void checkSingleLog(){
-        ApiLoggerClient client = new ApiLoggerClient(serverAddress, useTls, CApath, ClientCertPath, ClientKey, 10);
+        ApiLoggerClient client = new ApiLoggerClient(serverAddress, false, "","", "", 10);
 
         client.SendLog("json: ", ApiLoggerClient.log_priority.HIGH);
 

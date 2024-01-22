@@ -1,8 +1,8 @@
 server_address: 0.0.0.0:50051
 
-client_add: "[::]:50051" #for testing, has to do with the servername in certs
+client_add: 0.0.0.0:50051 #for testing, has to do with the servername in certs
 
-kafka_broker_url: 0.0.0.0:9092
+kafka_broker_url: :9092
 
 kafka_topic_name: apiCallLogs
 
