@@ -1,4 +1,5 @@
 import org.junit.Test;
+import org.onnet.apilogger.ApiLoggerClient;
 
 public class ApiLoggerClientTest {
 

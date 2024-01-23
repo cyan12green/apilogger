@@ -1,3 +1,5 @@
+package org.onnet.apilogger;
+
 import com.google.protobuf.ByteString;
 import io.grpc.*;
 
